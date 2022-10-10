@@ -25,6 +25,18 @@ app.use(express.static('website'));
 const port = 8000;
 
 const server = app.listen(port, () => {
-    console.log(`welcome from server! 
-                this is port: ${port}`);
+    console.log(` welcome from server!\n this is port: ${port}`);
 });
+
+
+// get data 
+app.get('/getData' , (req, res) => {
+    res.send(projectData);
+    console.log(projectData);
+});
+
+// send data 
+app.post('/sendData' , (req, res) => {
+    projectData = req.body;
+    res.send({ message: 'Successfully Sending Data'});
+})
